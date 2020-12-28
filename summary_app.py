@@ -3,8 +3,8 @@ import streamlit as st
 from transformers import pipeline
 
 #Headings for Web Application
-st.title("National Intelligence University")
-st.subheader("Adam's Text Summarization Application Prototype")
+st.title("Adam's Text Summarization Application Prototype")
+#st.subheader("Adam's Text Summarization Application Prototype")
 
 #min_lengthy = st.slider('Minimum summary length (words)', min_value=10, max_value=120, value=30, step=10)
 max_lengthy = st.slider('Maximum summary length (words)', min_value=30, max_value=150, value=60, step=10)
