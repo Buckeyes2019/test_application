@@ -1,6 +1,0 @@
-Requirements:
--- streamlit
--- torch
--- torchvision
--- transformers
--- spacy
