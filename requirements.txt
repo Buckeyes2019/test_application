@@ -3,3 +3,4 @@ torch
 torchvision
 spacy
 transformers
+en_core_web_sm
