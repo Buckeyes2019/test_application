@@ -7,8 +7,8 @@ import spacy
 from spacy import displacy
 import en_core_web_sm
 sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
-sentiment = pipeline("sentiment-analysis", framework="pt")
-nlp = en_core_web_sm.load()
+#sentiment = pipeline("sentiment-analysis", framework="pt")
+#nlp = en_core_web_sm.load()
 #device = 0 if torch.cuda.is_available() else -1
 
 #Headings for Web Application
@@ -52,7 +52,7 @@ if option == 'Sentiment Analysis':
     submit = st.button('Generate')
     if submit:
         st.subheader("Sentiment")
-        #sentiment = pipeline("sentiment-analysis", framework="pt")#, device=0)
+        sentiment = pipeline("sentiment-analysis", framework="pt")#, device=0)
         result = sentiment(text)
         sent = result[0]['label']
         cert = result[0]['score']
@@ -63,7 +63,7 @@ if option == 'Named Entity Recognition':
     text = st.text_area('Enter Text Below:', height=300) #text is stored in this variable
     #uploaded_file = st.file_uploader("Choose a file", type=['txt'])
     submit = st.button('Generate')
-    #nlp = en_core_web_sm.load()
+    nlp = en_core_web_sm.load()
     #Getting Entity and type of Entity
     if submit:    
         #entities = []
