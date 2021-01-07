@@ -6,7 +6,7 @@ from transformers import pipeline
 import spacy
 from spacy import displacy
 import en_core_web_sm
-device = 0 if torch.cuda.is_available() else -1
+#device = 0 if torch.cuda.is_available() else -1
 
 #Headings for Web Application
 st.title("Adam's Natural Language Processing Application Prototype")
@@ -38,7 +38,7 @@ if option == 'Text Summarization':
         st.subheader("Summary")
         st.write("This may take a moment...")
         #@st.cache
-        sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt", device=device)
+        sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")#, device=device)
         summWords = sum2(text,max_length=max_lengthy, min_length=25, num_beams=num_beamer, do_sample=True, early_stopping=True)
         text2 = re.sub(r'\s([?.!"](?:\s|$))', r'\1', summWords[0]["summary_text"])
         st.write(text2)    #Creating graph for sentiment across each sentence in the text inputted
@@ -49,7 +49,7 @@ if option == 'Sentiment Analysis':
     submit = st.button('Generate')
     if submit:
         st.subheader("Sentiment")
-        sentiment = pipeline("sentiment-analysis", framework="pt", device=0)
+        sentiment = pipeline("sentiment-analysis", framework="pt")#, device=0)
         result = sentiment(text)
         sent = result[0]['label']
         cert = result[0]['score']
