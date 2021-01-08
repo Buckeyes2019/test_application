@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 st.title("Machine Learning: Clustering Application")
 # %%
 df = st.file_uploader("Upload your data (.csv files only)", type=["csv"])
-var2 = st.selectbox('Select Number of Cluster', [1,2,3,4,5,6,7,8])
+#var2 = st.selectbox('Select Number of Cluster', [1,2,3,4,5,6,7,8])
 var1 = st.slider('Number of Clusters', min_value=2, max_value=8, value=4, step=1)
 #var2 = st.slider('Speed vs quality of summary (1 is fastest)', min_value=1, max_value=8, value=4, step=1)
 submit = st.button('Execute')
