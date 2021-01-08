@@ -13,7 +13,8 @@ var1 = st.slider('Number of Clusters', min_value=2, max_value=8, value=4, step=1
 #var2 = st.slider('Speed vs quality of summary (1 is fastest)', min_value=1, max_value=8, value=4, step=1)
 submit = st.button('Execute')
 if submit:
-    df1 = df.iloc[:, 0:3]
+    df2 = pd.read_csv(df)
+    df1 = df2.iloc[:, 0:3]
     model = KMeans(n_clusters=var1, random_state=42)
     cluster = model.fit(df1)
     df1["cluster"] = cluster.predict(df1)
