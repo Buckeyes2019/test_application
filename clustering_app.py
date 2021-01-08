@@ -18,7 +18,7 @@ if submit:
     model = KMeans(n_clusters=var1, random_state=42)
     cluster = model.fit(df1)
     df1["cluster"] = cluster.predict(df1)
-    st.dataframe(df1.head)
+    st.dataframe(df1)
     #fig = px.scatter_3d(df1, x=first_column, y=second_column, z=third_column, color=df1.cluster)
     #fig.show()
 
