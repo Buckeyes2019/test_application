@@ -14,7 +14,7 @@ var1 = st.slider('Number of Clusters', min_value=2, max_value=8, value=4, step=1
 submit = st.button('Execute')
 if submit:
     df2 = pd.read_csv(df)
-    df1 = df2.iloc[:, 0:3]
+    df1 = df2.iloc[:, 0:2]
     model = KMeans(n_clusters=var1, random_state=42)
     cluster = model.fit(df1)
     df1["cluster"] = cluster.predict(df1)
