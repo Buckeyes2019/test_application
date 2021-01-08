@@ -7,16 +7,16 @@ from sklearn.cluster import KMeans
 
 # %%
 st.title("Machine Learning: Clustering Application")
-st.subheader("This purpose of this application is allow you to run the K-means clustering alogrithm on your own data without having to write any code.") 
+st.subheader("The purpose of this application is to allow you to run the K-means clustering alogrithm on your own data without having to write any code.") 
 
-st.write("_The app is intended to educational use, please do not upload any classified, proprietary, or sensitive information._")
+st.write("_The app is intended for educational use, please do not upload any classified, proprietary, or sensitive information._")
 
-st.write("The first step is to prepare your data. To do so, please put your data into a format like the example given below. You can include as many rows as you would like but only three columns.")
+st.write("The first step is to prepare your data. To do so, please put your data into a format like the example given below. You can include as many rows as you like but only three columns.")
 demo = {'Category_1': [0.65, 0.75, 0.52, 0.14], 'Category_2': [0.56, 0.23, 0.76, 0.92], 'Category_3': [0.23,0.34, 0.11, 0.64]}
 demo1 = pd.DataFrame(demo)
 st.dataframe(demo1)
 
-st.write("The next step is to save your data as a comma separated value (csv) file and then drag and drop the file into space below.")
+st.write("The next step is to save your data as a comma separated value (csv) file and then drag and drop the file into the space below.")
 df = st.file_uploader("Upload your data (.csv files only)", type=["csv"])
 
 st.write("Please select how many clusters you would like to create and click the 'Generate' button.") 
