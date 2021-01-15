@@ -34,7 +34,7 @@ if option == 'Text Summarization':
         st.write("This may take a moment...")
         #@st.cache
         #, device=device)
-        sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-6-6", tokenizer="sshleifer/distilbart-cnn-6-6",framework="pt")
+        sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
         summWords = sum2(text,max_length=max_lengthy, min_length=25, num_beams=num_beamer, do_sample=True, early_stopping=True)
         text2 =summWords[0]["summary_text"] #re.sub(r'\s([?.!"](?:\s|$))', r'\1', )
         st.write(text2)    #Creating graph for sentiment across each sentence in the text inputted    #entDict = dict(zip(entities, entityLabels)) #Creating dictionary with entity and entity types
