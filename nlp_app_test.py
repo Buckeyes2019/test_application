@@ -12,9 +12,9 @@ import en_core_web_sm
 st.title("Adam's Natural Language Processing Application Prototype")
 #st.subheader("Adam's Natural Language Processing Application Prototype")
 st.subheader("Which natural language processing task would you like to try?")
-st.write("Text Summarization: Condensing larger bodies of text into smaller bodies.")
 st.write("Sentiment Analysis: Identifying whether a piece of text has a positive or negative sentiment.")
 st.write("Named Entity Recognition: Identifying all geopolitical entities, organizations, people, locations, or dates in a body of text.")
+st.write("Text Summarization: Condensing larger bodies of text into smaller bodies.")
 
 option = st.selectbox('Please select from the list',('','Sentiment Analysis','Named Entity Recognition','Text Summarization'))
 
@@ -34,7 +34,7 @@ if option == 'Text Summarization':
         st.write("This may take a moment...")
         #@st.cache
         #, device=device)
-        sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
+        sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
         summWords = sum2(text,max_length=max_lengthy, min_length=25, num_beams=num_beamer, do_sample=True, early_stopping=True)
         text2 =summWords[0]["summary_text"] #re.sub(r'\s([?.!"](?:\s|$))', r'\1', )
         st.write(text2)    #Creating graph for sentiment across each sentence in the text inputted    #entDict = dict(zip(entities, entityLabels)) #Creating dictionary with entity and entity types
