@@ -26,7 +26,7 @@ def entRecognizer(entDict, typeEnt):
 if option == 'Text Summarization':
     max_lengthy = st.slider('Maximum summary length (words)', min_value=30, max_value=150, value=60, step=10)
     num_beamer = st.slider('Speed vs quality of summary (1 is fastest)', min_value=1, max_value=8, value=4, step=1)
-    text = st.text_area('Enter Text Below:', height=300) #text is stored in this variable
+    text = st.text_area('Enter Text Below (maximum 900 words):', height=300) #text is stored in this variable
     #uploaded_file = st.file_uploader("Choose a file", type=['txt'])
     submit = st.button('Generate')  
     if submit:
