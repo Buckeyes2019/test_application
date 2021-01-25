@@ -18,7 +18,7 @@ option = st.selectbox('Please select from the list',('','Sentiment Analysis','Na
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_1():
-    sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
+    sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
     return sum2
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
