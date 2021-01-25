@@ -23,7 +23,7 @@ def Loading_Model_1():
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
-    sentiment = pipeline("sentiment-analysis", model="tiny-distilbert-base-uncased-finetuned-sst-2-english, tokenizer="tiny-distilbert-base-uncased-finetuned-sst-2-english", framework="pt")
+    sentiment = pipeline("sentiment-analysis", model="tiny-distilbert-base-uncased-finetuned-sst-2-english", tokenizer="tiny-distilbert-base-uncased-finetuned-sst-2-english", framework="pt")
     return sentiment
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
