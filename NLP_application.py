@@ -21,17 +21,17 @@ def Loading_Model_1():
     sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
     return sum2
 
-#@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
     sentiment = pipeline("sentiment-analysis", framework="pt")
     return sentiment
 
-#@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_3():
     nlp = en_core_web_sm.load()
     return nlp
 
-#@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True)
 def entRecognizer(entDict, typeEnt):
     entList = [ent for ent in entDict if entDict[ent] == typeEnt]
     return entList
