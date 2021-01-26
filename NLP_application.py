@@ -16,17 +16,17 @@ st.write("- __Text Summarization:__ Condensing larger bodies of text into smalle
 
 option = st.selectbox('Please select from the list',('','Sentiment Analysis','Named Entity Recognition','Text Summarization'))
 
-#@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_1():
     sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
     return sum2
 
-#@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
     sentiment = pipeline("sentiment-analysis", framework="pt")
     return sentiment
 
-#@st.cache(allow_output_mutation=True, show_spinner=False)
+@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_3():
     nlp = en_core_web_sm.load()
     return nlp
@@ -36,16 +36,14 @@ def entRecognizer(entDict, typeEnt):
     entList = [ent for ent in entDict if entDict[ent] == typeEnt]
     return entList
 
-#with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
-#    sum2 = Loading_Model_1()
-#    sentiment = Loading_Model_2()
-#    nlp = Loading_Model_3()
+with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
+    sum2 = Loading_Model_1()
+    sentiment = Loading_Model_2()
+    nlp = Loading_Model_3()
 
 if option == 'Text Summarization':
     max_lengthy = st.slider('Maximum summary length (words)', min_value=30, max_value=150, value=60, step=10)
     num_beamer = st.slider('Speed vs quality of summary (1 is fastest)', min_value=1, max_value=8, value=4, step=1)
-    with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
-        sum2 = Loading_Model_1()
     text = st.text_area('Enter Text Below (maximum 900 words):', height=300) 
     #uploaded_file = st.file_uploader("Choose a file", type=['txt'])
     submit = st.button('Generate')  
@@ -57,8 +55,6 @@ if option == 'Text Summarization':
         st.write(text2)
 
 if option == 'Sentiment Analysis':
-    with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
-        sentiment = Loading_Model_2()
     text = st.text_area('Enter Text Below:', height=200)
     #uploaded_file = st.file_uploader("Choose a file", type=['txt'])
     submit = st.button('Generate')
@@ -70,8 +66,6 @@ if option == 'Sentiment Analysis':
         st.write(f'Text Sentiment: {sent} | Certainty Score: {(cert*100):.2f}')
 
 if option == 'Named Entity Recognition':
-    with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
-        nlp = Loading_Model_3()
     text = st.text_area('Enter Text Below:', height=300)
     #uploaded_file = st.file_uploader("Choose a file", type=['txt'])
     submit = st.button('Generate')
