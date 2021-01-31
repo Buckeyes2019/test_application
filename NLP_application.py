@@ -1,8 +1,8 @@
-#Necessary imports
 import streamlit as st
-import torch
+#import torch
+#import tensorflow
 from transformers import pipeline
-import spacy
+#import spacy
 from spacy import displacy
 import en_core_web_sm
 st.set_page_config(page_title="NLP Prototype")
@@ -18,12 +18,12 @@ option = st.selectbox('Please select from the list',('','Sentiment Analysis','Na
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_1():
-    sum2 = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", tokenizer="sshleifer/distilbart-cnn-12-6",framework="pt")
+    sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="tf")
     return sum2
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
-    sentiment = pipeline("sentiment-analysis", framework="pt")
+    sentiment = pipeline("sentiment-analysis", framework="tf")
     return sentiment
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
