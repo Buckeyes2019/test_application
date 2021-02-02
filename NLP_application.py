@@ -1,5 +1,5 @@
 import streamlit as st
-#import torch
+import torch
 #import tensorflow
 from transformers import pipeline
 #import spacy
@@ -18,12 +18,12 @@ option = st.selectbox('Please select from the list',('','Sentiment Analysis','Na
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_1():
-    sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="tf")
+    sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
     return sum2
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
-    sentiment = pipeline("sentiment-analysis", framework="tf")
+    sentiment = pipeline("sentiment-analysis", framework="pt")
     return sentiment
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
