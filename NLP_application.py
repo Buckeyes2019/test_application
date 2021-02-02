@@ -2,7 +2,7 @@ import streamlit as st
 import torch
 #import tensorflow
 from transformers import pipeline
-#import spacy
+import spacy
 from spacy import displacy
 import en_core_web_sm
 st.set_page_config(page_title="NLP Prototype")
