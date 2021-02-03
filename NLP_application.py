@@ -16,22 +16,22 @@ st.write("- __Text Summarization:__ Condensing larger bodies of text into smalle
 
 option = st.selectbox('Please select from the list',('','Sentiment Analysis','Named Entity Recognition','Text Summarization'))
 
-@st.cache(allow_output_mutation=True, show_spinner=False)
+#@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_1():
     sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
     return sum2
 
-@st.cache(allow_output_mutation=True, show_spinner=False)
+#@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_2():
     sentiment = pipeline("sentiment-analysis", framework="pt")
     return sentiment
 
-@st.cache(allow_output_mutation=True, show_spinner=False)
+#@st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_3():
     nlp = spacy.load('en_core_web_sm')
     return nlp
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def entRecognizer(entDict, typeEnt):
     entList = [ent for ent in entDict if entDict[ent] == typeEnt]
     return entList
