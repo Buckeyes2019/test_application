@@ -4,7 +4,7 @@ import torch
 from transformers import pipeline
 import spacy
 from spacy import displacy
-import en_core_web_sm
+#import en_core_web_sm
 st.set_page_config(page_title="NLP Prototype")
 
 st.title("Natural Language Processing Prototype")
@@ -28,7 +28,7 @@ def Loading_Model_2():
 
 @st.cache(allow_output_mutation=True, show_spinner=False)
 def Loading_Model_3():
-    nlp = en_core_web_sm.load()
+    nlp = spacy.load('en_core_web_sm')
     return nlp
 
 @st.cache(allow_output_mutation=True)
