@@ -17,29 +17,29 @@ st.write("- __Text Summarization:__ Condensing larger bodies of text into smalle
 option = st.selectbox('Please select from the list',('','Sentiment Analysis','Named Entity Recognition','Text Summarization'))
 
 #@st.cache(allow_output_mutation=True, show_spinner=False)
-def Loading_Model_1():
-    sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
-    return sum2
+#def Loading_Model_1():
+#   sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
+#    return sum2
 
 #@st.cache(allow_output_mutation=True, show_spinner=False)
-def Loading_Model_2():
-    sentiment = pipeline("sentiment-analysis", framework="pt")
-    return sentiment
+#def Loading_Model_2():
+#    sentiment = pipeline("sentiment-analysis", framework="pt")
+#    return sentiment
 
 #@st.cache(allow_output_mutation=True, show_spinner=False)
-def Loading_Model_3():
-    nlp = spacy.load('en_core_web_sm')
-    return nlp
+#def Loading_Model_3():
+#    nlp = spacy.load('en_core_web_sm')
+#    return nlp
 
 #@st.cache(allow_output_mutation=True)
 def entRecognizer(entDict, typeEnt):
     entList = [ent for ent in entDict if entDict[ent] == typeEnt]
     return entList
 
-with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
-    sum2 = Loading_Model_1()
-    sentiment = Loading_Model_2()
-    nlp = Loading_Model_3()
+#with st.spinner(text="Please wait for the three models to load. This should take approximately 60 seconds."):
+#    sum2 = Loading_Model_1()
+#    sentiment = Loading_Model_2()
+#    nlp = Loading_Model_3()
 
 if option == 'Text Summarization':
     max_lengthy = st.slider('Maximum summary length (words)', min_value=30, max_value=150, value=60, step=10)
@@ -50,6 +50,7 @@ if option == 'Text Summarization':
     if submit:
         st.subheader("Summary:")
         st.write("This may take a moment...")
+        sum2 = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn",framework="pt")
         summWords = sum2(text, max_length=max_lengthy, min_length=25, num_beams=num_beamer, do_sample=True, early_stopping=False, repetition_penalty=1.2, length_penalty=1.2)
         text2 =summWords[0]["summary_text"] #re.sub(r'\s([?.!"](?:\s|$))', r'\1', )
         st.write(text2)
@@ -60,6 +61,7 @@ if option == 'Sentiment Analysis':
     submit = st.button('Generate')
     if submit:
         st.subheader("Sentiment:")
+        sentiment = pipeline("sentiment-analysis", framework="pt")
         result = sentiment(text)
         sent = result[0]['label']
         cert = result[0]['score']
@@ -72,6 +74,7 @@ if option == 'Named Entity Recognition':
     if submit:    
         entities = []
         entityLabels = []
+        nlp = spacy.load('en_core_web_sm')
         doc = nlp(text)
         for ent in doc.ents:
             entities.append(ent.text)
