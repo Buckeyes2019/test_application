@@ -50,7 +50,7 @@ if option == 'Text Summarization':
     if submit:
         st.subheader("Summary:")
         st.write("This may take a moment...")
-        sum2 = pipeline("summarization", model="sshleifer/distilbart-xsum-12-1", tokenizer="sshleifer/distilbart-xsum-12-1",framework="pt")
+        sum2 = pipeline("summarization", model="sshleifer/distill-pegasus-xsum-12-12", tokenizer="sshleifer/distill-pegasus-xsum-12-12",framework="pt")
         summWords = sum2(text, max_length=max_lengthy, min_length=25, num_beams=num_beamer, do_sample=True, early_stopping=False, repetition_penalty=1.2, length_penalty=1.2)
         text2 =summWords[0]["summary_text"] #re.sub(r'\s([?.!"](?:\s|$))', r'\1', )
         st.write(text2)
